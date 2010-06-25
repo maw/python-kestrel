@@ -1,0 +1,5 @@
+build/
+dist/
+kestrel.egg-info/
+*~
+*.pyc
