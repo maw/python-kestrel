@@ -7,8 +7,7 @@ class KestrelEnqueueException(Exception):
 
 class connection(object):
     def __init__(self, servers, queue, reliable=True,
-                 default_timeout=1000, fanout_key=None,
-                 dummy="dummy"):
+                 default_timeout=1000, fanout_key=None)
         if fanout_key == None:
             self.__queue = queue
         else:
@@ -16,7 +15,6 @@ class connection(object):
             pass
         
         self.__reliable = reliable
-        self.__dummy = dummy
 
         if default_timeout == 0:
             self.__timeout_suffix = ""
@@ -32,8 +30,8 @@ class connection(object):
             
             self.__reliable_read_key = "%s/open/%s" % \
                 (self.__queue, self.__timeout_suffix)
-            self.__reliable_close_key = "%s/close" % self.__dummy
-            self.__reliable_abort_key = "%s/abort" % self.__dummy
+            self.__reliable_close_key = "%s/close" % self.__queue
+            self.__reliable_abort_key = "%s/abort" % self.__queue
         else:
             self.dequeue = None # self.__unreliable_read_fn
             self.dequeue_finish = None # self.__unreliable_finish_read_fn
