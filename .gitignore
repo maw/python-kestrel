@@ -3,3 +3,4 @@ dist/
 kestrel.egg-info/
 *~
 *.pyc
+env/
