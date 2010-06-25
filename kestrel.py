@@ -7,7 +7,7 @@ class KestrelEnqueueException(Exception):
 
 class connection(object):
     def __init__(self, servers, queue, reliable=True,
-                 default_timeout=1000, fanout_key=None)
+                 default_timeout=0, fanout_key=None):
         if fanout_key == None:
             self.__queue = queue
         else:
@@ -51,8 +51,8 @@ class connection(object):
     
     def __reliable_read_fn(self, timeout=0):
         # FIXME timeout belongs here, somehow
-        l = self.__mc.get(self.__reliable_read_key)
-        
+        key = "%s/t=%d" % (self.__queue, timeout)
+        l = self.__mc.get(key)
         return l
     
     def __reliable_finish_read_fn(self):
