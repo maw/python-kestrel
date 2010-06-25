@@ -19,11 +19,9 @@ print "messages all queued up; last message was: '%s'" % m
 total = 0
 counter = 0 
 
-
-# for i in xrange(0, max):
-
 while True:
-    l = k.dequeue()
+    print `total`
+    l = k.dequeue()#timeout=1000)
     
     #print l
     if l == None:
