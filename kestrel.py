@@ -21,7 +21,7 @@ class connection(object):
         if default_timeout == 0:
             self.__timeout_suffix = ""
         else:
-            self.))timeout_suffix = "t=%d" % default_timeout
+            self.__timeout_suffix = "t=%d" % default_timeout
             pass
                 
         if reliable:
@@ -46,7 +46,7 @@ class connection(object):
         pass
 
     def __reliable_write_fn(self, value):
-        ret = mc.set(self.__queue, value)
+        ret = self.__mc.set(self.__queue, value)
         if ret == 0:
             raise KestrelEnqueueException()
         pass
