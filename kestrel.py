@@ -41,7 +41,7 @@ class connection(object):
             self.enqueue = None
             pass
         
-        self.__mc = memcache.Client(servers, debug=1)
+        self.__mc = memcache.Client(servers, allow_get_timeouts=True, debug=1)
         
         pass
 
