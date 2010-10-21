@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import memcache
 
 # XXX where best to specify timeout?  constructor or various methods?
