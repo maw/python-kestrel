@@ -49,7 +49,7 @@ class connection(object):
         ret = self.__mc.set(self.__queue, value)
         if ret == 0:
             raise KestrelEnqueueException()
-        pass
+        return ret
     
     def __reliable_read_fn(self, timeout=0):
         # FIXME timeout belongs here, somehow
